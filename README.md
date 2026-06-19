@@ -54,6 +54,12 @@ Expected repository settings:
 - Custom domain: `docs.libpolycall.org`
 - DNS: `docs.libpolycall.org` should point to the GitHub Pages endpoint for `obinexus/libpolycall-docs`
 
+If a workflow run reports `Get Pages site failed` or `HttpError: Not Found`, enable Pages once in the repository settings:
+
+1. Open `Settings -> Pages`.
+2. Set `Build and deployment -> Source` to `GitHub Actions`.
+3. Save `docs.libpolycall.org` as the custom domain.
+
 For GitLab mirrors, `.gitlab-ci.yml` builds the same Jekyll site into `public/`.
 
 ## License
