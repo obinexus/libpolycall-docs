@@ -60,6 +60,24 @@ If a workflow run reports `Get Pages site failed` or `HttpError: Not Found`, ena
 2. Set `Build and deployment -> Source` to `GitHub Actions`.
 3. Save `docs.libpolycall.org` as the custom domain.
 
+The same one-time setup can be done with a GitHub token that has repository Administration write and Pages write permissions:
+
+```bash
+gh api \
+  --method POST \
+  repos/obinexus/libpolycall-docs/pages \
+  -f build_type=workflow
+
+gh api \
+  --method PUT \
+  repos/obinexus/libpolycall-docs/pages \
+  -f build_type=workflow \
+  -f cname=docs.libpolycall.org \
+  -F https_enforced=true
+```
+
+After GitHub Pages exists for the repository, the normal workflow deployment can use `GITHUB_TOKEN`.
+
 For GitLab mirrors, `.gitlab-ci.yml` builds the same Jekyll site into `public/`.
 
 ## License
