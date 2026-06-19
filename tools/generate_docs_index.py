@@ -15,6 +15,7 @@ SKIP_PARTS = {
     "_layouts",
     "_site",
     "docs",
+    "dop-archiecture",  # typo duplicate of dop-architecture; pending git rm
     "internal",
     "node_modules",
 }
@@ -30,7 +31,7 @@ def title_for(path: Path) -> str:
         return path.parent.name.replace("-", " ").replace("_", " ").title()
 
     title = path.stem.replace("-", " ").replace("_", " ").strip()
-    title = title.replace("â€“", "-")
+    title = title.replace("–", "-")
     return " ".join(title.split()).title()
 
 

@@ -9,14 +9,35 @@
 }
 
 .brand-mark {
-  display: inline-grid;
+  display: inline-block;
   width: 2rem;
   height: 2rem;
-  place-items: center;
-  color: #ffffff;
-  background: var(--accent-strong);
   border-radius: 50%;
-  font-size: 0.78rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.founder-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--line);
+  flex-shrink: 0;
+}
+
+.founder-avatar--sm {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 
 .site-nav {
@@ -147,6 +168,10 @@
   color: var(--text);
   background: var(--surface);
   font: inherit;
+}
+
+.doc-item.is-hidden {
+  display: none;
 }
 
 @media (max-width: 900px) {

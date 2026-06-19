@@ -12,7 +12,10 @@ const paths = {
   scss: "docs/assets/scss/**/*.scss",
   scssEntry: "docs/assets/scss/site.scss",
   js: "docs/assets/js/**/*.js",
+  images: "docs/assets/images/**/*",
   cssDest: "docs/assets",
+  jsDest: "docs/assets/js",
+  imagesDest: "docs/assets/images",
 };
 
 function clean() {
@@ -32,17 +35,23 @@ function styles() {
 }
 
 function scripts() {
-  return src(paths.js).pipe(dest("docs/assets/js"));
+  return src(paths.js).pipe(dest(paths.jsDest));
+}
+
+function images() {
+  return src(paths.images, { encoding: false }).pipe(dest(paths.imagesDest));
 }
 
 function watchAssets() {
   watch(paths.scss, styles);
   watch(paths.js, scripts);
+  watch(paths.images, images);
 }
 
 exports.clean = clean;
 exports.styles = styles;
 exports.scripts = scripts;
-exports.build = series(clean, parallel(styles, scripts));
+exports.images = images;
+exports.build = series(clean, parallel(styles, scripts, images));
 exports.watch = series(exports.build, watchAssets);
 exports.default = exports.build;
