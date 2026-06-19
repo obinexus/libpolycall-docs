@@ -4,10 +4,12 @@ pages:
   stage: deploy
   before_script:
     - apt-get update -y
-    - apt-get install -y python3
+    - apt-get install -y python3 nodejs npm
     - bundle install
+    - npm ci
   script:
-    - python3 tools/generate_docs_index.py
+    - npm run build:assets
+    - python3 -m tools.generate_docs_index
     - bundle exec jekyll build --source docs --destination public
   artifacts:
     paths:

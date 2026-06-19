@@ -33,6 +33,18 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install UI tooling
+        run: npm ci
+
+      - name: Build UI assets
+        run: npm run build:assets
+
       - name: Install Python tooling
         run: python -m pip install -e .
 

@@ -45,6 +45,23 @@ python -m tools.generate_docs_index
 
 The generated file is `docs/_data/docs_index.yml`.
 
+### UI Asset Pipeline
+
+The documentation interface separates concerns across Jekyll templates, SCSS, compiled CSS, and JavaScript:
+
+- HTML/Liquid templates live in `docs/_layouts/` and `docs/_includes/`.
+- SCSS source files live in `docs/assets/scss/`.
+- Gulp compiles SCSS into `docs/assets/site.css`.
+- JavaScript behavior lives in `docs/assets/js/site.js`.
+- Markdown content remains in `docs/` and is rendered by Jekyll.
+
+Install UI tooling and compile assets:
+
+```bash
+npm ci
+npm run build:assets
+```
+
 ## Publishing
 
 GitHub Pages is configured through `.github/workflows/pages.yml`.

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">OBINexus protocol documentation</p>
+          <h1>LibPolyCall Documentation</h1>
+          <p>
+            Protocol-first documentation for the LibPolyCall polyglot system,
+            from runtime coordination to zero-trust service boundaries.
+          </p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="{{ '/welcome/' | relative_url }}">Start reading</a>
+            <a class="button secondary" href="https://github.com/obinexus/libpolycall">Source repo</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="Documentation status">
+          <span class="panel-label">Publishing target</span>
+          <strong>docs.libpolycall.org</strong>
+          <span class="panel-label">Site engine</span>
+          <strong>Jekyll + Gulp</strong>
+          <span class="panel-label">Generated index</span>
+          <strong>{{ site.data.docs_index.size | default: 0 }} entries</strong>
+        </div>
+      </section>
+
+      <section class="section-band">
+        <div class="section-heading">
+          <p class="eyebrow">Core areas</p>
+          <h2>Navigation Map</h2>
+        </div>
+        <div class="tile-grid">
+          <a class="tile" href="{{ '/architecture/' | relative_url }}">
+            <span>Architecture</span>
+            <p>System structure, SemVerX, protocol design, and implementation philosophy.</p>
+          </a>
+          <a class="tile" href="{{ '/api/core/protocol/' | relative_url }}">
+            <span>API</span>
+            <p>Protocol, auth, configuration, network, telemetry, and accessibility notes.</p>
+          </a>
+          <a class="tile" href="{{ '/config/' | relative_url }}">
+            <span>Configuration</span>
+            <p>PolyCall XML schemas and runtime service configuration references.</p>
+          </a>
+          <a class="tile" href="{{ '/guides/getting-started/obinexus-makefile-fixes-guide/' | relative_url }}">
+            <span>Guides</span>
+            <p>Practical setup and implementation material for contributors and operators.</p>
+          </a>
+          <a class="tile" href="{{ '/legal/' | relative_url }}">
+            <span>Legal</span>
+            <p>Constitutional, accessibility, governance, and rights documentation.</p>
+          </a>
+          <a class="tile" href="{{ '/versioning/naming_standards/' | relative_url }}">
+            <span>Versioning</span>
+            <p>Naming, readiness, tagging, and release process notes.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-band">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Generated index</p>
+            <h2>Documentation Library</h2>
+          </div>
+          <label class="search-box">
+            <span>Search</span>
+            <input type="search" data-doc-search placeholder="Filter documents">
+          </label>
+        </div>
+
+        {% assign docs_index = site.data.docs_index | default: empty %}
+        {% if docs_index.size > 0 %}
+        <div class="doc-list" data-doc-list>
+          {% for item in docs_index limit: 96 %}
+          <a class="doc-item" href="{{ item.url | relative_url }}" data-doc-item>
+            <span>{{ item.title }}</span>
+            <small>{{ item.format }}</small>
+          </a>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p>Run <code>python -m tools.generate_docs_index</code> to generate the documentation index.</p>
+        {% endif %}
+      </section>
+
+      <section class="content-page">
+        {{ content }}
+      </section>
+    </main>
+    {% include footer.html %}
+    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  </body>
+</html>

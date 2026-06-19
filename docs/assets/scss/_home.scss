@@ -1,0 +1,68 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  width: calc(100% - 2rem);
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 4rem);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 8vw, 5.25rem);
+  letter-spacing: 0;
+}
+
+.hero p {
+  max-width: 44rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.hero-panel {
+  align-self: center;
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-panel strong {
+  margin-bottom: 0.85rem;
+  color: var(--accent-strong);
+  font-size: 1.25rem;
+}
+
+.panel-label,
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    align-self: stretch;
+  }
+}
