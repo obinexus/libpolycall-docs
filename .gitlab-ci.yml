@@ -1,0 +1,16 @@
+image: ruby:3.3
+
+pages:
+  stage: deploy
+  before_script:
+    - apt-get update -y
+    - apt-get install -y python3
+    - bundle install
+  script:
+    - python3 tools/generate_docs_index.py
+    - bundle exec jekyll build --source docs --destination public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

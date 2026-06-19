@@ -1,0 +1,50 @@
+title: LibPolyCall Documentation
+description: Documentation for LibPolyCall, the OBINexus protocol-first polyglot system.
+url: "https://docs.libpolycall.org"
+baseurl: ""
+repository: obinexus/libpolycall-docs
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+permalink: pretty
+timezone: Europe/London
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: "assets"
+    values:
+      sitemap: false
+  - scope:
+      path: "internal"
+    values:
+      sitemap: false
+
+exclude:
+  - docs
+  - vendor
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+github:
+  repository_url: https://github.com/obinexus/libpolycall-docs
+  libpolycall_url: https://github.com/obinexus/libpolycall
+
+youtube:
+  playlist_url: https://www.youtube.com/playlist?list=PL0ifFOZbja_IM7fJtXwbjdGQwLxWT7DWm
