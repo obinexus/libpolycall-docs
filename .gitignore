@@ -1,0 +1,5 @@
+.jekyll-cache/
+_site/
+*.egg-info/
+__pycache__/
+.ruff_cache/

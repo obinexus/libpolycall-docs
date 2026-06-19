@@ -39,7 +39,8 @@ http://127.0.0.1:4000
 The repository includes a small Python helper that scans Markdown and PDF documents and writes a Jekyll data file:
 
 ```bash
-python tools/generate_docs_index.py
+python -m pip install -e .
+python -m tools.generate_docs_index
 ```
 
 The generated file is `docs/_data/docs_index.yml`.
